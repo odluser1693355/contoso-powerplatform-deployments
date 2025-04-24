@@ -25,9 +25,9 @@ jobs:
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-    
+          POWERPLATFORM_URL: ${{ secrets.POWERPLATFORM_URL }}
         run: |
-          pac auth create  --clientId $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --clientSecret $AZURE_CLIENT_SECRET
+          pac auth create --url $POWERPLATFORM_URL --clientId $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --clientSecret $AZURE_CLIENT_SECRET
       
       - name: Validate Solution
         run: |
