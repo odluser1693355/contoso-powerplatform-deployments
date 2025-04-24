@@ -1,0 +1,27 @@
+# Node.js dependencies
+node_modules/
+
+# Build output directories
+bin/
+dist/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables and secrets
+.env
+.taskkey
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.rsuser
+
+# Power Platform CLI artifacts
+*.cdsproj
+*.cdsproj.user
