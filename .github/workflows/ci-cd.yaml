@@ -1,0 +1,38 @@
+name: Power Platform CI/CD
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Power Platform CLI
+        run: npm install -g pac@latest
+
+      - name: Authenticate with Power Platform
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          POWERPLATFORM_URL: ${{ secrets.POWERPLATFORM_URL }}
+        run: |
+          pac auth create --url $POWERPLATFORM_URL --clientId $AZURE_CLIENT_ID --tenant $AZURE_TENANT_ID --clientSecret $AZURE_CLIENT_SECRET
+      
+      - name: Validate Solution
+        run: |
+          pac solution validate --path "./solution_export" --solutionName "ContosoSolution" --target "test"
+      
+      - name: Deploy to Test Environment
+        run: |
+          pac solution deploy --path "./solution_export" --solutionName "ContosoSolution" --target "test"
