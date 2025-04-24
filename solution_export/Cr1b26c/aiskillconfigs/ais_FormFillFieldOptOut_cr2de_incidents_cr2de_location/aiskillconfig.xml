@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_cr2de_incidents_cr2de_location">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>cr2de_incidents</entityid.logicalname>
+    <logicalname>cr2de_location</logicalname>
+  </attribute>
+  <description>cr2de_incidents - Location Form fill opt out</description>
+  <entity>
+    <logicalname>cr2de_incidents</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>
